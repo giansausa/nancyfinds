@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Anchor Links — Interactive Demo</title>
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f5f5f5;
+    color: #222;
+    line-height: 1.6;
+  }
+  .article-container {
+    max-width: 760px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px 32px 60px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .demo-banner {
+    max-width: 760px;
+    margin: 24px auto 16px;
+    padding: 16px 20px;
+    background: #FFF8E1;
+    border: 1px solid #FFE082;
+    border-left: 4px solid #F9A825;
+    border-radius: 6px;
+    color: #5D4037;
+    font-size: 14px;
+  }
+  .demo-banner strong { color: #BF360C; }
+
+  .article-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    line-height: 1.2;
+  }
+  .article-byline {
+    color: #777;
+    font-size: 13px;
+    margin: 0 0 18px;
+  }
+
+  .trust-strip {
+    margin: 0 0 22px;
+    line-height: 2;
+  }
+  .trust-pill {
+    display: inline-block;
+    background: #F4F4F4;
+    color: #333;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-right: 8px;
+  }
+  .trust-pill .check { color: #2E7D32; font-weight: 700; }
+
+  .tldr-card {
+    background: #F9F9F9;
+    border: 1px solid #E5E5E5;
+    border-left: 4px solid #444;
+    border-radius: 6px;
+    padding: 20px 22px;
+    margin: 0 0 28px;
+  }
+  .tldr-badge {
+    display: inline-block;
+    background: #222;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
+  .tldr-headline { font-size: 16px; font-weight: 700; margin: 0 0 8px; }
+  .tldr-body { font-size: 14px; margin: 0 0 14px; }
+  .tldr-cta {
+    display: inline-block;
+    background: #222;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 0.4rem;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .lead-para {
+    font-size: 15px;
+    color: #333;
+    margin: 0 0 16px;
+  }
+
+  /* THE SHORTLIST — this is the key element */
+  .shortlist {
+    margin: 24px 0 32px;
+    padding: 20px 24px;
+    background: #FAFAFA;
+    border-left: 3px solid #222;
+    border-radius: 4px;
+  }
+  .shortlist-heading {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #555;
+    margin: 0 0 14px;
+  }
+  .shortlist ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 24px;
+  }
+  .shortlist li {
+    margin: 0;
+  }
+
+  /* CURRENT (boring) — plain text */
+  .shortlist-current ul li {
+    color: #555;
+    padding: 4px 0;
+    font-size: 15px;
+  }
+
+  /* NEW (anchor links) — clickable */
+  .shortlist-new ul li a {
+    color: #1a1a1a;
+    text-decoration: underline;
+    text-decoration-color: #999;
+    text-underline-offset: 3px;
+    padding: 4px 0;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.15s ease;
+  }
+  .shortlist-new ul li a:hover {
+    color: #E91E63;
+    text-decoration-color: #E91E63;
+  }
+  .shortlist-new ul li a::after {
+    content: " →";
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+  .shortlist-new ul li a:hover::after {
+    opacity: 0.7;
+  }
+
+  /* Section dividers */
+  .section-divider {
+    margin: 50px 0 32px;
+    padding-top: 32px;
+    border-top: 2px solid #f0f0f0;
+  }
+  .product-section {
+    padding: 16px 0;
+  }
+  .product-heading {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 14px;
+  }
+  .product-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #f5e1e8 0%, #f0d0db 100%);
+    border-radius: 6px;
+    margin: 0 0 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 12px;
+  }
+  .product-price {
+    font-size: 14px;
+    color: #555;
+    margin: 0 0 14px;
+    font-weight: 600;
+  }
+  .product-price .strike { text-decoration: line-through; color: #aaa; font-weight: 400; margin-left: 6px; }
+  .product-desc {
+    font-size: 14px;
+    color: #444;
+    margin: 0 0 14px;
+  }
+  .urgency-strip {
+    background: #FEF3F2;
+    border-left: 3px solid #DC2626;
+    padding: 10px 14px;
+    margin: 12px 0;
+    border-radius: 4px;
+    color: #7F1D1D;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .buy-btn {
+    display: inline-block;
+    background-color: #222;
+    color: #fff;
+    border-radius: 0.4rem;
+    padding: 12px 18px;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 4px;
+    font-size: 14px;
+  }
+
+  /* Back to top button */
+  .back-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #222;
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 100;
+  }
+  .back-to-top:hover { background: #000; }
+
+  /* Comparison header */
+  .compare-header {
+    background: #fff;
+    padding: 24px;
+    max-width: 760px;
+    margin: 32px auto;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .compare-header h2 { margin: 0 0 12px; font-size: 20px; }
+  .compare-header .compare-row { display: flex; gap: 16px; align-items: flex-start; }
+  .compare-header .compare-col { flex: 1; padding: 12px; background: #fafafa; border-radius: 6px; }
+  .compare-header .compare-col-label { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #888; margin-bottom: 8px; letter-spacing: 0.05em; }
+  .compare-header .compare-col-current { border-left: 3px solid #aaa; }
+  .compare-header .compare-col-proposed { border-left: 3px solid #2E7D32; }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  <strong>👋 Interactive demo</strong> — scroll down to "The 8 Rose Toys That'll Make You Scream Out Loud" list. <strong>Click any product name.</strong> The page will smooth-scroll directly to that product's section. That's what anchor links do.
+</div>
+
+<div class="compare-header">
+  <h2>Side-by-side: shortlist before vs after</h2>
+  <div class="compare-row">
+    <div class="compare-col compare-col-current">
+      <p class="compare-col-label">Current (plain text)</p>
+      <ul style="margin:0;padding-left:18px;color:#555;font-size:14px;">
+        <li>Blossom Duo</li>
+        <li>Rosebud</li>
+        <li>Bloom</li>
+        <li>The Rose</li>
+        <li>Vine</li>
+        <li>Lyra</li>
+        <li>Eclipse</li>
+        <li>Stem</li>
+      </ul>
+    </div>
+    <div class="compare-col compare-col-proposed">
+      <p class="compare-col-label">Proposed (clickable)</p>
+      <ul style="margin:0;padding-left:18px;font-size:14px;">
+        <li><a href="#blossom-duo" style="color:#1a1a1a;text-decoration:underline;text-decoration-color:#999;">Blossom Duo</a></li>
+        <li><a href="#rosebud" style="color:#1a1a1a;text-decoration:underline;text-decoration-color:#999;">Rosebud</a></li>
+        <li><a href="#bloom" style="color:#1a1a1a;text-decoration:underline;text-decoration-color:#999;">Bloom</a></li>
+        <li><a href="#the-rose" style="color:#1a1a1a;text-decoration:underline;text-decoration-color:#999;">The Rose</a></li>
+        <li><a href="#vine" style="color:#1a1a1a;text-decoration:underline;text-decoration-color:#999;">Vine</a></li>
+        <li><a href="#lyra" style="color:#1a1a1a;text-decoration:underline;text-decoration-color:#999;">Lyra</a></li>
+        <li><a href="#eclipse" style="color:#1a1a1a;text-decoration:underline;text-decoration-color:#999;">Eclipse</a></li>
+        <li><a href="#stem" style="color:#1a1a1a;text-decoration:underline;text-decoration-color:#999;">Stem</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="article-container" id="top">
+
+  <h1 class="article-title">8 Rose Toys So Good You'll Scream Out Loud (2026 Edition)</h1>
+  <p class="article-byline">Written by Madison Hayes</p>
+
+  <p class="trust-strip">
+    <span class="trust-pill"><span class="check">✓</span> 30+ products tested</span>
+    <span class="trust-pill"><span class="check">✓</span> 6 weeks of testing</span>
+    <span class="trust-pill"><span class="check">✓</span> No marketing samples</span>
+  </p>
+
+  <div class="tldr-card">
+    <span class="tldr-badge">TL;DR — Short on time?</span>
+    <p class="tldr-headline">If you only buy one rose toy of 2026, get the Blossom Duo.</p>
+    <p class="tldr-body">Two completely different mechanisms in one pocket-sized device. <strong>$64.99 (was $104.99)</strong>.</p>
+    <a href="#blossom-duo" class="tldr-cta">Read the Blossom Duo review →</a>
+  </div>
+
+  <p class="lead-para">The internet has been obsessed with rose toys since the TikTok craze of 2021 — but most of what's out there is the same single-function, slightly-too-loud silicone bulb dressed up in a different colour. The actual category has moved on. Hard...</p>
+
+  <p class="lead-para"><em style="color:#888;">[Two more paragraphs of intro — we tested every rose-shaped, rose-adjacent, rose-inspired toy, the technical refresher, etc.]</em></p>
+
+  <!-- THE SHORTLIST WITH ANCHOR LINKS -->
+  <div class="shortlist shortlist-new">
+    <p class="shortlist-heading">The 8 Rose Toys That'll Actually Make You Scream Out Loud:</p>
+    <ul>
+      <li><a href="#blossom-duo">Blossom Duo</a></li>
+      <li><a href="#rosebud">Rosebud</a></li>
+      <li><a href="#bloom">Bloom</a></li>
+      <li><a href="#the-rose">The Rose</a></li>
+      <li><a href="#vine">Vine</a></li>
+      <li><a href="#lyra">Lyra</a></li>
+      <li><a href="#eclipse">Eclipse</a></li>
+      <li><a href="#stem">Stem</a></li>
+    </ul>
+  </div>
+
+  <!-- 1. Blossom Duo -->
+  <div class="section-divider">
+    <div class="product-section">
+      <h2 class="product-heading" id="blossom-duo">1. Blossom Duo — The Surprise Screamer (Best Overall)</h2>
+      <div class="product-image">[ Blossom Duo product photo ]</div>
+      <p class="product-price">$64.99 <span class="strike">$104.99</span></p>
+      <p class="product-desc">This is the one. The Blossom Duo is the toy I keep coming back to and the one I'd hand to someone asking "which rose should I actually buy?" The trick is the magnetic cap — snap it on and you have a 9-pattern air-pulse suction toy. Pop it off and the exposed tip becomes a tapping mode that hits a completely different nerve...</p>
+      <p class="urgency-strip">⚡ Save $40 · 38% off · 2026 launch pricing</p>
+      <a href="#" class="buy-btn">Buy for $64.99</a>
+    </div>
+  </div>
+
+  <!-- 2. Rosebud -->
+  <div class="section-divider">
+    <div class="product-section">
+      <h2 class="product-heading" id="rosebud">2. Rosebud — The Budget Yelp (Best Budget)</h2>
+      <div class="product-image">[ Rosebud product photo ]</div>
+      <p class="product-price">from $35</p>
+      <p class="product-desc">The mass-market air-pulse staple that took the suction-toy concept to Big Box scale. Floral-molded silicone head, 11 intensity levels, liquid-air pressure-wave technology, IPX7 waterproof — all under $50...</p>
+      <a href="#" class="buy-btn">Buy for $35</a>
+    </div>
+  </div>
+
+  <!-- 3. Bloom -->
+  <div class="section-divider">
+    <div class="product-section">
+      <h2 class="product-heading" id="bloom">3. Bloom — The One That Sounds Like Oral (Best Tongue Toy)</h2>
+      <div class="product-image">[ Bloom product photo ]</div>
+      <p class="product-price">$59.99 <span class="strike">$99.99</span></p>
+      <p class="product-desc">The Bloom is the closest any rose toy in this lineup gets to actual oral stimulation, and the trick is the tongue tip. A flexible silicone tongue tucked inside the petal design that flicks across 6 motion patterns, paired with 6 vibration levels...</p>
+      <p class="urgency-strip">⚡ Save $40 · 40% off · Biggest discount in the tongue-toy category</p>
+      <a href="#" class="buy-btn">Buy for $59.99</a>
+    </div>
+  </div>
+
+  <!-- 4. The Rose -->
+  <div class="section-divider">
+    <div class="product-section">
+      <h2 class="product-heading" id="the-rose">4. The Rose — Celebrity-Approved Reaction</h2>
+      <div class="product-image">[ The Rose product photo ]</div>
+      <p class="product-price">from $99</p>
+      <p class="product-desc">The refined, design-led alternative to the standard rose silhouette. A premium tongue-style oral simulator that traded the iconic rose shape for an ergonomic palm-sized form...</p>
+      <a href="#" class="buy-btn">Buy for $99</a>
+    </div>
+  </div>
+
+  <!-- 5. Vine -->
+  <div class="section-divider">
+    <div class="product-section">
+      <h2 class="product-heading" id="vine">5. Vine — The Loudest in the Lineup</h2>
+      <div class="product-image">[ Vine product photo ]</div>
+      <p class="product-price">$69.99 <span class="strike">$109.99</span></p>
+      <p class="product-desc">If we're being honest, the Vine is the loudest toy on this list — and I mean the reaction it pulls, not the motor. It's a tethered design — a flexible silicone cord links a thrusting internal shaft to an external tongue/rosebud head...</p>
+      <p class="urgency-strip">⚡ Save $40 · 36% off · 2026 launch pricing</p>
+      <a href="#" class="buy-btn">Buy for $69.99</a>
+    </div>
+  </div>
+
+  <!-- 6. Lyra -->
+  <div class="section-divider">
+    <div class="product-section">
+      <h2 class="product-heading" id="lyra">6. Lyra — Budget Tongue, Real Reaction</h2>
+      <div class="product-image">[ Lyra product photo ]</div>
+      <p class="product-price">from $39</p>
+      <p class="product-desc">The viral rose-and-tongue hybrid that took the "feels better than oral" claim seriously. Rose-shaped silicone shell with a vibrating, flicking tongue tucked into the petals...</p>
+      <a href="#" class="buy-btn">Buy for $39</a>
+    </div>
+  </div>
+
+  <!-- 7. Eclipse -->
+  <div class="section-divider">
+    <div class="product-section">
+      <h2 class="product-heading" id="eclipse">7. Eclipse — Triple-Threat Volume (Best All-In-One)</h2>
+      <div class="product-image">[ Eclipse product photo ]</div>
+      <p class="product-price">$69.99 <span class="strike">$109.99</span></p>
+      <p class="product-desc">The Eclipse runs three separate sensation systems — tongue, transparent suction cup, and vibration — that you can layer or run individually. Layering all three is the move, and it's the only toy on this list that does it...</p>
+      <p class="urgency-strip">⚡ Save $40 · 36% off · 2026 launch pricing</p>
+      <a href="#" class="buy-btn">Buy for $69.99</a>
+    </div>
+  </div>
+
+  <!-- 8. Stem -->
+  <div class="section-divider">
+    <div class="product-section">
+      <h2 class="product-heading" id="stem">8. Stem — The Quiet One That Makes You Loud (Best for Couples)</h2>
+      <div class="product-image">[ Stem product photo ]</div>
+      <p class="product-price">$49.99 <span class="strike">$89.99</span></p>
+      <p class="product-desc">Wearable internal toy with a rose-decorated base that keeps it secure during wear, plus a wireless remote with a 10-metre range — so a partner can drive the experience from across the room...</p>
+      <p class="urgency-strip">⚡ Biggest discount in the lineup · Save $40 (44% off)</p>
+      <a href="#" class="buy-btn">Buy for $49.99</a>
+    </div>
+  </div>
+
+</div>
+
+<a href="#top" class="back-to-top">↑ Back to top</a>
+
+</body>
+</html>

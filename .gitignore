@@ -1,0 +1,23 @@
+# Never commit secrets — defensive default even though no secrets currently exist
+*.env
+*.env.local
+*.key
+*.pem
+.env*
+credentials.json
+secrets.json
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor junk
+.vscode/
+.idea/
+*.swp
+
+# Local-only build artifacts (if any are added later)
+node_modules/
+dist/
+build/

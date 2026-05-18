@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nancy vs Foil Button Mockup — D Preview</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    background: #f5f5f5;
+    color: #222;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .header h1 {
+    font-size: 28px;
+    margin: 0 0 8px;
+  }
+  .header p {
+    color: #666;
+    font-size: 15px;
+    margin: 0;
+  }
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .column {
+    background: #fff;
+    padding: 32px 28px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .column-header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #eee;
+  }
+  .column-header h2 {
+    font-size: 20px;
+    margin: 0 0 4px;
+  }
+  .column-header .label {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .label-current { background: #f0f0f0; color: #666; }
+  .label-proposed { background: #FCE4EC; color: #C2185B; }
+  .product-block {
+    margin-bottom: 36px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #eee;
+  }
+  .product-block:last-child {
+    border-bottom: none;
+  }
+  .product-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 4px;
+  }
+  .product-tag {
+    display: inline-block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .tag-nancy { background: #FCE4EC; color: #C2185B; }
+  .tag-foil { background: #ECEFF1; color: #546E7A; }
+  .product-price {
+    font-size: 13px;
+    color: #555;
+    margin: 0 0 12px;
+  }
+  .product-price .strike {
+    text-decoration: line-through;
+    color: #aaa;
+    margin-left: 6px;
+  }
+  .urgency-strip {
+    background: #FEF3F2;
+    border-left: 3px solid #DC2626;
+    padding: 10px 14px;
+    margin: 12px 0;
+    border-radius: 4px;
+    color: #7F1D1D;
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  /* CURRENT BUTTON STYLE — all identical */
+  .btn-current {
+    display: inline-block;
+    background-color: #222;
+    color: #fff;
+    border-radius: 0.4rem;
+    padding: 1rem 1.1rem;
+    text-decoration: none;
+    font-weight: 400;
+    margin-top: 8px;
+    font-size: 14px;
+  }
+
+  /* PROPOSED: Nancy = filled rose pink */
+  .btn-nancy {
+    display: inline-block;
+    background-color: #E91E63;
+    color: #fff;
+    border-radius: 0.4rem;
+    padding: 1rem 1.4rem;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 8px;
+    font-size: 15px;
+    box-shadow: 0 2px 6px rgba(233, 30, 99, 0.25);
+    transition: all 0.15s ease;
+  }
+  .btn-nancy:hover {
+    background-color: #C2185B;
+    box-shadow: 0 3px 10px rgba(233, 30, 99, 0.35);
+  }
+
+  /* PROPOSED: Foil = outlined gray, secondary */
+  .btn-foil {
+    display: inline-block;
+    background-color: transparent;
+    color: #444;
+    border: 1.5px solid #aaa;
+    border-radius: 0.4rem;
+    padding: 0.85rem 1.1rem;
+    text-decoration: none;
+    font-weight: 400;
+    margin-top: 8px;
+    font-size: 13px;
+    transition: all 0.15s ease;
+  }
+  .btn-foil:hover {
+    background-color: #f5f5f5;
+    border-color: #888;
+  }
+
+  .footer-note {
+    text-align: center;
+    margin-top: 40px;
+    padding: 24px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .footer-note h3 {
+    margin: 0 0 12px;
+    font-size: 16px;
+  }
+  .footer-note ul {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-left: 20px;
+    color: #555;
+    font-size: 14px;
+  }
+  .footer-note li {
+    margin-bottom: 6px;
+  }
+
+  @media (max-width: 800px) {
+    .compare-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>D — Nancy vs Foil Button Styling Preview</h1>
+    <p>Current state (left) vs proposed change (right). Same content, only buttons change.</p>
+  </div>
+
+  <div class="compare-grid">
+
+    <!-- CURRENT COLUMN -->
+    <div class="column">
+      <div class="column-header">
+        <span class="label label-current">Current</span>
+        <h2>All buttons identical</h2>
+      </div>
+
+      <div class="product-block">
+        <span class="product-tag tag-nancy">Nancy</span>
+        <p class="product-title">1. Blossom Duo — Best Overall</p>
+        <p class="product-price">$64.99 <span class="strike">$104.99</span></p>
+        <p class="urgency-strip">⚡ Save $40 · 38% off · 2026 launch pricing</p>
+        <a href="#" class="btn-current">Buy for $64.99</a>
+      </div>
+
+      <div class="product-block">
+        <span class="product-tag tag-foil">Foil (Satisfyer)</span>
+        <p class="product-title">2. Rosebud — Best Budget</p>
+        <p class="product-price">from $35</p>
+        <a href="#" class="btn-current">Buy for $35</a>
+      </div>
+
+      <div class="product-block">
+        <span class="product-tag tag-nancy">Nancy</span>
+        <p class="product-title">3. Vine — Best for Internal + External</p>
+        <p class="product-price">$69.99 <span class="strike">$109.99</span></p>
+        <p class="urgency-strip">⚡ Save $40 · 36% off · 2026 launch pricing</p>
+        <a href="#" class="btn-current">Buy for $69.99</a>
+      </div>
+
+      <div class="product-block">
+        <span class="product-tag tag-foil">Foil (Smile Makers)</span>
+        <p class="product-title">4. The Rose — Celebrity Favorite</p>
+        <p class="product-price">from $99</p>
+        <a href="#" class="btn-current">Buy for $99</a>
+      </div>
+
+      <div class="product-block">
+        <span class="product-tag tag-nancy">Nancy</span>
+        <p class="product-title">5. Bloom — Best Tongue Toy</p>
+        <p class="product-price">$59.99 <span class="strike">$99.99</span></p>
+        <p class="urgency-strip">⚡ Save $40 · 40% off · Biggest discount in the tongue-toy category</p>
+        <a href="#" class="btn-current">Buy for $59.99</a>
+      </div>
+
+    </div>
+
+    <!-- PROPOSED COLUMN -->
+    <div class="column">
+      <div class="column-header">
+        <span class="label label-proposed">Proposed (D)</span>
+        <h2>Nancy = filled rose · Foil = outlined gray</h2>
+      </div>
+
+      <div class="product-block">
+        <span class="product-tag tag-nancy">Nancy</span>
+        <p class="product-title">1. Blossom Duo — Best Overall</p>
+        <p class="product-price">$64.99 <span class="strike">$104.99</span></p>
+        <p class="urgency-strip">⚡ Save $40 · 38% off · 2026 launch pricing</p>
+        <a href="#" class="btn-nancy">Buy for $64.99 →</a>
+      </div>
+
+      <div class="product-block">
+        <span class="product-tag tag-foil">Foil (Satisfyer)</span>
+        <p class="product-title">2. Rosebud — Best Budget</p>
+        <p class="product-price">from $35</p>
+        <a href="#" class="btn-foil">Buy for $35</a>
+      </div>
+
+      <div class="product-block">
+        <span class="product-tag tag-nancy">Nancy</span>
+        <p class="product-title">3. Vine — Best for Internal + External</p>
+        <p class="product-price">$69.99 <span class="strike">$109.99</span></p>
+        <p class="urgency-strip">⚡ Save $40 · 36% off · 2026 launch pricing</p>
+        <a href="#" class="btn-nancy">Buy for $69.99 →</a>
+      </div>
+
+      <div class="product-block">
+        <span class="product-tag tag-foil">Foil (Smile Makers)</span>
+        <p class="product-title">4. The Rose — Celebrity Favorite</p>
+        <p class="product-price">from $99</p>
+        <a href="#" class="btn-foil">Buy for $99</a>
+      </div>
+
+      <div class="product-block">
+        <span class="product-tag tag-nancy">Nancy</span>
+        <p class="product-title">5. Bloom — Best Tongue Toy</p>
+        <p class="product-price">$59.99 <span class="strike">$99.99</span></p>
+        <p class="urgency-strip">⚡ Save $40 · 40% off · Biggest discount in the tongue-toy category</p>
+        <a href="#" class="btn-nancy">Buy for $59.99 →</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="footer-note">
+    <h3>What changes (and why)</h3>
+    <ul>
+      <li><strong>Nancy buttons:</strong> filled rose pink (#E91E63 — matches the article's brand color field), white text, bold, slightly larger, with → arrow, subtle shadow on hover.</li>
+      <li><strong>Foil buttons:</strong> outlined gray, dark text, no arrow, slightly smaller — clearly the "alternative" option.</li>
+      <li><strong>Urgency strips:</strong> unchanged. Still appear ONLY above Nancy buttons. This amplifies the asymmetry.</li>
+      <li><strong>Result:</strong> by the time the reader sees product 3, their brain has pattern-matched "pink = recommended, gray = alternative." Conversion lift compounds with the urgency strips.</li>
+      <li><strong>Mobile-safe:</strong> same button size, same line-height, same padding scale.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

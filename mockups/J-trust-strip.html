@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>J — Trust Strip Preview</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    background: #ececec;
+    color: #222;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+  .page-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .page-header h1 {
+    font-size: 26px;
+    margin: 0 0 8px;
+  }
+  .page-header p {
+    color: #666;
+    font-size: 15px;
+    margin: 0;
+  }
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .column {
+    background: #fff;
+    padding: 36px 36px 28px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+  .column-tag {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .tag-current { background: #f0f0f0; color: #666; }
+  .tag-proposed { background: #E8F4EA; color: #2E7D32; }
+
+  /* Article styling */
+  .article-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 8px 0 12px;
+    line-height: 1.25;
+  }
+  .article-byline {
+    color: #777;
+    font-size: 13px;
+    margin: 0 0 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #eee;
+  }
+  .hero-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #f0e0e6 0%, #e8d0d8 100%);
+    border-radius: 6px;
+    margin: 0 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 13px;
+  }
+
+  /* NEW: trust strip pills */
+  .trust-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 22px;
+  }
+  .trust-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #F4F4F4;
+    color: #333;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+  .trust-pill .check {
+    color: #2E7D32;
+    font-weight: 700;
+  }
+
+  /* Existing TL;DR card (gray version, already shipped) */
+  .tldr-card {
+    background: #F9F9F9;
+    border: 1px solid #E5E5E5;
+    border-left: 4px solid #444;
+    border-radius: 6px;
+    padding: 20px 22px;
+    margin: 0 0 28px;
+  }
+  .tldr-badge {
+    display: inline-block;
+    background: #222;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
+  .tldr-headline {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: #1a1a1a;
+  }
+  .tldr-body {
+    font-size: 14px;
+    color: #333;
+    margin: 0 0 14px;
+    line-height: 1.55;
+  }
+  .tldr-cta {
+    display: inline-block;
+    background: #222;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 0.4rem;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .article-lead {
+    font-size: 15px;
+    color: #444;
+    margin: 0 0 18px;
+  }
+
+  .footer-note {
+    text-align: center;
+    margin-top: 40px;
+    padding: 28px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .footer-note h3 {
+    margin: 0 0 16px;
+    font-size: 16px;
+  }
+  .footer-note ul {
+    text-align: left;
+    max-width: 700px;
+    margin: 0 auto;
+    padding-left: 20px;
+    color: #555;
+    font-size: 14px;
+  }
+  .footer-note li {
+    margin-bottom: 8px;
+  }
+  .footer-note strong {
+    color: #222;
+  }
+
+  .variant-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 16px 0;
+    padding: 16px;
+    background: #fafafa;
+    border-radius: 6px;
+    border: 1px dashed #ddd;
+  }
+  .variant-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #888;
+    letter-spacing: 0.05em;
+    width: 100%;
+    margin-bottom: 4px;
+  }
+
+  /* Variant A: rounded pills */
+  .variant-a .trust-pill {
+    background: #F4F4F4;
+  }
+
+  /* Variant B: outlined pills */
+  .variant-b .trust-pill {
+    background: #fff;
+    border: 1px solid #DDDDDD;
+  }
+
+  /* Variant C: minimal text only */
+  .variant-c {
+    color: #555;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+  .variant-c .check {
+    color: #2E7D32;
+    font-weight: 700;
+    margin: 0 4px;
+  }
+
+  /* Variant D: subtle gray fill */
+  .variant-d .trust-pill {
+    background: #2C2C2C;
+    color: #fff;
+  }
+  .variant-d .trust-pill .check {
+    color: #A5D6A7;
+  }
+
+  @media (max-width: 900px) {
+    .compare-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="page-header">
+    <h1>J — Trust Strip Preview</h1>
+    <p>3 small trust pills sit between the byline and the TL;DR card. Builds credibility before the conversion ask.</p>
+  </div>
+
+  <div class="compare-grid">
+
+    <!-- CURRENT -->
+    <div class="column">
+      <span class="column-tag tag-current">Current</span>
+
+      <h1 class="article-title">Petal, Pulse, and Pebble: The 8 Rose Toys Worth Knowing in 2026</h1>
+      <p class="article-byline">Written by Madison Hayes</p>
+
+      <!-- Existing TL;DR card -->
+      <div class="tldr-card">
+        <span class="tldr-badge">TL;DR — Short on time?</span>
+        <p class="tldr-headline">If you only buy one rose toy of 2026, get the Blossom Duo.</p>
+        <p class="tldr-body">Two completely different mechanisms in one pocket-sized device — the most useful product in the category. <strong>$64.99 (was $104.99)</strong>.</p>
+        <a href="#" class="tldr-cta">Get the Blossom Duo →</a>
+      </div>
+
+      <p class="article-lead">The internet has been obsessed with rose toys since the TikTok craze of 2021 — but most of what's out there is the same single-function, slightly-too-loud silicone bulb dressed up in a different colour...</p>
+
+    </div>
+
+    <!-- PROPOSED -->
+    <div class="column">
+      <span class="column-tag tag-proposed">Proposed (J) — Trust strip added</span>
+
+      <h1 class="article-title">Petal, Pulse, and Pebble: The 8 Rose Toys Worth Knowing in 2026</h1>
+      <p class="article-byline">Written by Madison Hayes</p>
+
+      <!-- NEW: Trust strip -->
+      <div class="trust-strip">
+        <span class="trust-pill"><span class="check">✓</span> 30+ products tested</span>
+        <span class="trust-pill"><span class="check">✓</span> 6 weeks of testing</span>
+        <span class="trust-pill"><span class="check">✓</span> No marketing samples</span>
+      </div>
+
+      <!-- Existing TL;DR card -->
+      <div class="tldr-card">
+        <span class="tldr-badge">TL;DR — Short on time?</span>
+        <p class="tldr-headline">If you only buy one rose toy of 2026, get the Blossom Duo.</p>
+        <p class="tldr-body">Two completely different mechanisms in one pocket-sized device — the most useful product in the category. <strong>$64.99 (was $104.99)</strong>.</p>
+        <a href="#" class="tldr-cta">Get the Blossom Duo →</a>
+      </div>
+
+      <p class="article-lead">The internet has been obsessed with rose toys since the TikTok craze of 2021 — but most of what's out there is the same single-function, slightly-too-loud silicone bulb dressed up in a different colour...</p>
+
+    </div>
+
+  </div>
+
+  <!-- Variant gallery -->
+  <div style="background:#fff;padding:32px;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,0.08);margin-top:32px;">
+    <h2 style="font-size:18px;margin:0 0 4px;">Style variants — pick the one you like</h2>
+    <p style="color:#666;margin:0 0 24px;font-size:14px;">All three pills are the same content. The visual treatment differs. My recommendation: A (matches the existing TL;DR card neutrality).</p>
+
+    <div class="variant-row variant-a">
+      <span class="variant-label">A — Rounded gray pills (recommended)</span>
+      <span class="trust-pill"><span class="check">✓</span> 30+ products tested</span>
+      <span class="trust-pill"><span class="check">✓</span> 6 weeks of testing</span>
+      <span class="trust-pill"><span class="check">✓</span> No marketing samples</span>
+    </div>
+
+    <div class="variant-row variant-b">
+      <span class="variant-label">B — Outlined pills (lighter visual weight)</span>
+      <span class="trust-pill"><span class="check">✓</span> 30+ products tested</span>
+      <span class="trust-pill"><span class="check">✓</span> 6 weeks of testing</span>
+      <span class="trust-pill"><span class="check">✓</span> No marketing samples</span>
+    </div>
+
+    <div class="variant-row variant-c">
+      <span class="variant-label">C — Minimal inline text (most editorial, least visual)</span>
+      <span><span class="check">✓</span>30+ products tested<span class="check">✓</span>6 weeks of testing<span class="check">✓</span>No marketing samples</span>
+    </div>
+
+    <div class="variant-row variant-d">
+      <span class="variant-label">D — Dark filled pills (matches Buy buttons)</span>
+      <span class="trust-pill"><span class="check">✓</span> 30+ products tested</span>
+      <span class="trust-pill"><span class="check">✓</span> 6 weeks of testing</span>
+      <span class="trust-pill"><span class="check">✓</span> No marketing samples</span>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <h3>Why this works</h3>
+    <ul>
+      <li><strong>Trust before conversion:</strong> The TL;DR card asks for a buying decision. The trust strip RIGHT above it gives the reader 3 reasons to take the recommendation seriously, before the ask.</li>
+      <li><strong>Pure trust signals, no bias:</strong> Three neutral claims — no Nancy mention, no editorial slant. Same line we put on the landing pages.</li>
+      <li><strong>Scannable in 2 seconds:</strong> Pills + checkmarks are pattern-recognition friendly. Reader's brain processes "✓✓✓" as "this is legit" before they even read the text.</li>
+      <li><strong>Mobile-friendly:</strong> Pills auto-wrap on narrow screens. Each pill is tappable-sized for touch UX even though they're not buttons.</li>
+      <li><strong>Standard editorial pattern:</strong> Wirecutter, NYT Cooking, Good Housekeeping — all use trust strips near the byline.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

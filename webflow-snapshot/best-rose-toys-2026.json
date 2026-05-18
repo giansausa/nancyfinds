@@ -1,0 +1,70 @@
+{
+  "_snapshot_metadata": {
+    "captured_at": "2026-05-18",
+    "captured_via": "Webflow Data API list_collection_items",
+    "restore_instructions": "Use Webflow MCP data_cms_tool.update_collection_items with collection_id=679b57c29c98d0ebaa7678c5 and items=[{id: this.id, fieldData: this.fieldData}]"
+  },
+  "id": "6a054f613630e12a56a2e38e",
+  "cmsLocaleId": "679148ba0c2d7fe8766ce709",
+  "lastPublished": "2026-05-16T06:42:09.149Z",
+  "lastUpdated": "2026-05-16T06:41:53.554Z",
+  "createdOn": "2026-05-14T04:28:17.817Z",
+  "isArchived": false,
+  "isDraft": false,
+  "fieldData": {
+    "name": "Petal, Pulse, and Pebble: The 8 Rose Toys Worth Knowing in 2026",
+    "slug": "best-rose-toys-2026",
+    "title-tag": "8 Best Rose Toys of 2026 — Tested & Ranked | Aura",
+    "post-introduction-2": "We tested 8 of 2026's most-hyped rose toys back to back — suction, tongue, tethered, wearable, the works — and the picture is genuinely surprising. Most of the best ones aren't even rose-shaped anymore.",
+    "post-author-3": "Written by Madison Hayes",
+    "about-the-author": "Madison Hayes covers wellness, beauty, and intimacy products for Aura. Five years freelancing for indie wellness titles before joining the staff in 2024. Her testing process: three months of real use per product, no marketing samples, no rushed verdicts. If it doesn't earn a recommendation in her group chat first, it doesn't earn one here.",
+    "image-by-the-author": {
+      "fileId": "6a056fc14683cea34e895d1b",
+      "url": "https://cdn.prod.website-files.com/679148ba0c2d7fe8766ce734/6a056fc14683cea34e895d1b_image-1778737021638.jpg",
+      "alt": null
+    },
+    "post-image": {
+      "fileId": "6a06c087214eb4e75d850158",
+      "url": "https://cdn.prod.website-files.com/679148ba0c2d7fe8766ce734/6a06c087214eb4e75d850158_6a06b994c4aed201544432c0_Landing%2520Page.jpeg",
+      "alt": null
+    },
+    "main-image": {
+      "fileId": "6a06be6377fb96b319a7bc71",
+      "url": "https://cdn.prod.website-files.com/679148ba0c2d7fe8766ce734/6a06be6377fb96b319a7bc71_6a06bd4ac1e2beb89be83551_landing-page-tight.jpeg",
+      "alt": null
+    },
+    "text-under-the-main-image": "We may earn commission from links on this page, but we only recommend products we love and have tested.",
+    "featured": false,
+    "color": "#E91E63",
+    "button-for-post-1": "https://nancyfinds.com/products/nancy-blossom-duo",
+    "button-text-for-post-1": "Buy for $64.99",
+    "button-for-post-2": "https://www.amazon.com/stores/page/68F9F5E6-C535-407D-9D84-3F8EC3ABD47E/search?lp_asin=B099NQJQ35&store_ref=bl_ast_dp_brandlogo_sto&terms=Satisfyer+Pro+2+Modern+Blossom&linkCode=ll2&tag=zenifytoday-satpro2mb-20&linkId=eeb11d683b7b4bd8c93fb36917a57a30&language=en_US&ref_=as_li_ss_tl",
+    "button-text-for-post-2": "Buy for $35",
+    "button-for-post-3": "https://nancyfinds.com/products/nancy-vine",
+    "button-text-for-post-3": "Buy for $69.99",
+    "button-for-post-4": "https://smilemakerscollection.com/products/the-poet",
+    "button-text-for-post-4": "Buy for $99",
+    "button-for-post-5": "https://nancyfinds.com/products/nancy-bloom",
+    "button-text-for-post-5": "Buy for $59.99",
+    "post-lead": "SEE articles/non-scream-article.html FOR THE FULL RICH-TEXT HTML — too long to inline cleanly in JSON",
+    "post-body": "SEE articles/non-scream-article.html § slot-1",
+    "post-body-2": "SEE articles/non-scream-article.html § slot-2",
+    "post-body-3": "SEE articles/non-scream-article.html § slot-3",
+    "post-body-4": "SEE articles/non-scream-article.html § slot-4",
+    "post-body-5": "SEE articles/non-scream-article.html § slot-5",
+    "post-summary-2": "SEE articles/non-scream-article.html § slots-6-7-8-plus-faq",
+    "post-body-6": null,
+    "post-body-7": null,
+    "post-body-8": null,
+    "button-link-for-post-6": null,
+    "button-link-for-post-7": null,
+    "button-link-for-post-8": null,
+    "button-text-for-post-6": null,
+    "button-text-for-post-7": null,
+    "button-text-for-post-8": null,
+    "thumbnail-image": null,
+    "thumbnail-image-2": null,
+    "thumbnail-image-3": null,
+    "thumbnail-image-4": null
+  }
+}
