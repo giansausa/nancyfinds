@@ -62,6 +62,18 @@ Foils must:
 
 **Never use** a foil with hybrid mechanisms or multi-system design — it would dilute Nancy's category-leading angle.
 
+### Scream-funnel-only positioning shift (locked 2026-05-22)
+
+In the scream article only, the budget foils (Rosebud #2, Lyra #6) are framed as **starter tier** — for occasional use, travel, or first-timers testing the category before committing to a daily-driver pick. Blossom Duo (#1) is positioned as **Best Investment Pick** in both the H3 and the TL;DR card to anchor the "pay $30 more, get the long-term pick" funnel.
+
+| Slot | Scream H3 label (post-2026-05-22) | Non-scream H3 label (unchanged) |
+|---|---|---|
+| 1. Blossom Duo | **Best Investment Pick** | Best Overall |
+| 2. Rosebud | **Best for First-Timers** | Best Budget |
+| 6. Lyra | **Best for Travel & Occasional Use** | Most Realistic Tongue at Budget |
+
+Rationale: Clarity data on the scream funnel showed budget foils were outperforming Nancy products on click. The reframe demotes the foils into "starter tier" copy without removing them (preserves the incognito spread of 5 Nancy + 3 foils), redirecting decided readers toward the "invest" path on Blossom Duo. Non-scream funnel is intentionally untouched as a control.
+
 ---
 
 ## Editorial voice strategy

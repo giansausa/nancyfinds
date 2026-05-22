@@ -1,13 +1,14 @@
 {
   "_snapshot_metadata": {
-    "captured_at": "2026-05-18",
-    "captured_via": "Webflow Data API list_collection_items",
-    "restore_instructions": "Use Webflow MCP data_cms_tool.update_collection_items with collection_id=679b57c29c98d0ebaa7678c5 and items=[{id: this.id, fieldData: this.fieldData}]. Full RichText content for post-lead, post-body, post-body-2 through post-body-5, post-summary-2 is in articles/scream-article.html — each <section data-field=\"...\"> contains the field's HTML."
+    "captured_at": "2026-05-22",
+    "captured_via": "Webflow Data API list_collection_items + update_collection_items + publish_collection_items",
+    "restore_instructions": "Use Webflow MCP data_cms_tool.update_collection_items with collection_id=679b57c29c98d0ebaa7678c5 and items=[{id: this.id, fieldData: this.fieldData}]. Full RichText content for post-lead, post-body, post-body-2 through post-body-5, post-summary-2 is in articles/scream-article.html — each <section data-field=\"...\"> contains the field's HTML.",
+    "latest_change": "2026-05-22 reframing: Blossom Duo (#1) labeled (Best Investment Pick), Rosebud (#2) labeled (Best for First-Timers) with dialed-down intro/bullets/Real Talk, Lyra (#6) labeled (Best for Travel & Occasional Use) with new Real Talk subsection. TL;DR card swapped 'most useful product in the category' → 'the investment pick of the lineup'."
   },
   "id": "6a06c55ba44d4099c949bea6",
   "cmsLocaleId": "679148ba0c2d7fe8766ce709",
-  "lastPublished": "2026-05-16T06:42:09.149Z",
-  "lastUpdated": "2026-05-16T06:41:53.516Z",
+  "lastPublished": "2026-05-22T07:50:00.000Z",
+  "lastUpdated": "2026-05-22T07:49:51.573Z",
   "createdOn": "2026-05-15T07:03:54.482Z",
   "isArchived": false,
   "isDraft": false,
